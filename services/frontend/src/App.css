@@ -1,0 +1,17 @@
+.App {
+  min-height: 100vh;
+  text-align: center;
+  background-color: #444444;
+  color: white;
+}
+
+.recipeai-header {
+  padding-top: 20px;
+  margin: 0;
+}
+
+@media only screen and (max-width: 1440px) {
+  .recipeai-header {
+      padding-top: 10px;
+  }
+}

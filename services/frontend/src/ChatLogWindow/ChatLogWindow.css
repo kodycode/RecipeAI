@@ -1,0 +1,29 @@
+.chat-log-window {
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+    width: 100%;
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 1440px) {
+    .chat-log-window {
+        margin-top: 15px;
+    }
+}
+
+@media only screen and (max-height: 700px) {
+    .chat-log-window {
+        height: 75vh;
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    .chat-log-window {
+        height: 60vh;
+    }
+}
+
+.chat-widget-container {
+    width: 80vw;
+}
