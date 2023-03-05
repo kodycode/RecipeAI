@@ -10,6 +10,9 @@ This app was created using:
 * MongoDB - Database
 * Docker
 
+<img width="1440" alt="Screenshot 2023-03-05 at 2 33 06 AM" src="https://user-images.githubusercontent.com/13345899/222948298-9183cca4-93be-453d-b948-09858c7e9912.png">
+
+
 # Installation instructions
 
     1. Have the latest npm, node, docker installed.
