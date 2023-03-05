@@ -1,6 +1,6 @@
 # RecipeAI
 
-Created a dockerized full-stack application to query food recipes from OpenAI's AI model using [OpenAI's Completions API](https://platform.openai.com/docs/api-reference/completions).
+Created a dockerized full-stack application to generate food recipes from using [OpenAI's Completions API](https://platform.openai.com/docs/api-reference/completions).
 
 This app was created using:
 
