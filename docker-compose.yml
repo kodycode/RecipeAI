@@ -1,0 +1,58 @@
+x-app:
+  env_file: &ref_0
+    - .env
+  restart: '${DOCKER_RESTART_POLICY:-unless-stopped}'
+  stop_grace_period: 3s
+  tty: true
+  healthcheck:
+    interval: 60s
+    timeout: 3s
+    start_period: 5s
+    retries: 3
+services:
+  backend:
+    env_file: *ref_0
+    restart: '${DOCKER_RESTART_POLICY:-unless-stopped}'
+    stop_grace_period: 3s
+    tty: true
+    healthcheck:
+      test: '${DOCKER_SERVER_HEALTHCHECK_TEST}'
+    build:
+      context: ./services/backend
+      dockerfile: Dockerfile
+      target: '${NODE_ENV}'
+      args:
+        - 'NODE_ENV=${NODE_ENV}'
+        - 'IS_DOCKER_ENV=${IS_DOCKER_ENV}'
+    links:
+      - mongo
+    ports:
+      - '${DOCKER_SERVER_PORT_FORWARD}:${SERVER_PORT}'
+    volumes:
+      - './services/backend:/node/app:delegated'
+      - /node/app/node_modules
+  frontend:
+    env_file: *ref_0
+    restart: '${DOCKER_RESTART_POLICY:-unless-stopped}'
+    stop_grace_period: 3s
+    tty: true
+    healthcheck:
+      test: '${DOCKER_CLIENT_HEALTHCHECK_TEST}'
+    build:
+      context: ./services/frontend
+      target: '${NODE_ENV}'
+      dockerfile: Dockerfile
+      args:
+        - 'NODE_ENV=${NODE_ENV}'
+        - 'IS_DOCKER_ENV=${IS_DOCKER_ENV}'
+    ports:
+      - '${DOCKER_CLIENT_PORT_FORWARD}:${CLIENT_PORT}'
+    volumes:
+      - './services/frontend:/node/app:delegated'
+      - /node/app/node_modules
+  mongo:
+    env_file: *ref_0
+    container_name: mongo
+    image: 'mongo:6.0.4'
+    ports:
+      - '${MONGO_PORT_FORWARD}:${MONGO_INTERNAL_PORT}'
