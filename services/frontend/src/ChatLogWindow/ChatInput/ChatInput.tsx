@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
+import { type ChatInputProps } from '../ChatTypes/ChatTypes';
 import './ChatInput.css';
-
-interface ChatInputProps {
-  chatLog: string[]
-  handleChatInputEntered: (ingredientInput: string) => void
-};
 
 /* Component for the Chat Input section below ChatDisplay */
 export const ChatInput = ({ chatLog, handleChatInputEntered }: ChatInputProps): JSX.Element => {

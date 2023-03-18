@@ -20,3 +20,8 @@ export interface ChatContextInterface {
   state: ChatState
   handleChatInputEntered: (ingredient: string) => void
 };
+
+export interface ChatInputProps {
+  chatLog: string[]
+  handleChatInputEntered: (ingredientInput: string) => void
+};
